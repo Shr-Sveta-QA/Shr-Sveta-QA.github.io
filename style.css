@@ -1,4 +1,5 @@
 /* === VARIABLES & IMPORTS === */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 :root {
   /* Футуристичная цветовая палитра */
   --neon-blue: #00d4ff;
@@ -18,8 +19,6 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --glass-border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* === BASE STYLES === */
 * {
@@ -1220,4 +1219,5 @@ body::before {
     transform: translateY(100vh);
   }
 }
+
 
