@@ -1,5 +1,5 @@
-/* === VARIABLES & IMPORTS === */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+/* === VARIABLES & IMPORTS === */
 :root {
   /* Футуристичная цветовая палитра */
   --neon-blue: #00d4ff;
@@ -1219,5 +1219,6 @@ body::before {
     transform: translateY(100vh);
   }
 }
+
 
 
