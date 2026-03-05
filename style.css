@@ -1219,6 +1219,178 @@ body::before {
     transform: translateY(100vh);
   }
 }
+/* Добавьте в ваш CSS файл */
 
+/* === DESIGN ROW STYLES - ИСПРАВЛЕННАЯ ВЕРСИЯ === */
+.design-row {
+  max-width: 1100px;
+  margin: 30px auto 0;
+  padding: 0 10px; /* Добавили отступы по бокам */
+}
 
+.design-card {
+  width: 100%;
+  background: var(--card-bg); /* Используем ту же переменную, что и у других карточек */
+  backdrop-filter: blur(10px); /* Тот же эффект размытия */
+  border: var(--glass-border); /* Такая же рамка как у всех */
+  border-radius: var(--border-radius); /* Используем переменную с закруглением */
+  padding: 25px;
+  transition: var(--transition);
+  box-shadow: var(--shadow); /* Такая же тень */
+  margin: 0; /* Убираем лишние отступы */
+}
+
+/* Акцент только на иконках, но в рамках общего стиля */
+.design-card .card-header i {
+  background: rgba(157, 78, 221, 0.1) !important;
+  color: var(--neon-purple) !important;
+  border-radius: 10px; /* Добавляем скругление для иконок */
+}
+
+.design-card .info-item i {
+  color: var(--neon-purple) !important;
+}
+
+/* Выделяем важную информацию, но сохраняем общий стиль */
+.design-card .info-item.highlight {
+  background: rgba(157, 78, 221, 0.05); /* Более прозрачный фон */
+  border: 1px solid rgba(157, 78, 221, 0.15);
+  border-radius: 8px; /* Добавляем скругление */
+  padding: 15px; /* Немного увеличиваем отступы */
+}
+
+.design-card .info-item.highlight:hover {
+  background: rgba(157, 78, 221, 0.1);
+  border-color: rgba(157, 78, 221, 0.25);
+  transform: translateX(5px);
+}
+
+/* Футер карточки в общем стиле */
+.card-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(157, 78, 221, 0.15); /* Более тонкая линия */
+  text-align: center;
+}
+
+.card-footer p {
+  color: var(--cyber-light);
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.card-footer i {
+  color: var(--neon-purple);
+  margin: 0 5px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* Добавляем отступы для всей секции personal */
+.personal {
+  padding: 80px 20px !important; /* Увеличиваем отступы секции */
+}
+
+/* Делаем отступы между карточками и краями */
+.personal-grid.optimized {
+  gap: 25px;
+  padding: 0 10px; /* Добавляем отступы по бокам */
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .design-row {
+    margin-top: 20px;
+    padding: 0 5px;
+  }
+  
+  .design-card {
+    padding: 20px;
+  }
+  
+  .design-card .info-item.highlight {
+    padding: 12px;
+  }
+  
+  .card-footer p {
+    font-size: 0.85rem;
+  }
+  
+  .personal {
+    padding: 60px 15px !important;
+  }
+  
+  .personal-grid.optimized {
+    gap: 20px;
+    padding: 0 5px;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+  .design-card {
+    padding: 15px;
+  }
+  
+  .design-card .info-item.highlight {
+    padding: 10px;
+  }
+  
+  .card-footer {
+    margin-top: 15px;
+    padding-top: 12px;
+  }
+}
+.terminal-style {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quote-pipe.start {
+  color: var(--matrix-green);
+  font-size: 2rem;
+}
+
+.quote-pipe.end {
+  color: var(--matrix-green);
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.terminal-style:hover .quote-pipe.end {
+  opacity: 1;
+  transition: var(--transition);
+}
+.output-pipe {
+  color: var(--neon-purple);
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+.card-footer.accent-quote p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: var(--cyber-light);
+  font-size: 0.95rem;
+  font-style: italic;
+  opacity: 0.95;
+}
+
+.card-footer.accent-quote i:first-child {
+  color: var(--neon-purple);
+  font-size: 0.9rem;
+  filter: drop-shadow(0 0 5px rgba(157, 78, 221, 0.5));
+}
+
+.card-footer.accent-quote i.subtle {
+  color: var(--cyber-light);
+  opacity: 0.3;
+  font-size: 0.7rem;
+  margin-left: 2px;
+}
 
