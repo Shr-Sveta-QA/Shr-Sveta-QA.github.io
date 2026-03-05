@@ -856,6 +856,15 @@ body::before {
   opacity: 0.9;
   line-height: 1.6;
 }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.skill-card {
+  flex: 0 1 calc(33.333% - 25px);
+  min-width: 280px;
+  max-width: 350px;
 
 /* === CONTACTS SECTION === */
 .contacts {
@@ -1170,23 +1179,5 @@ body::before {
   0% { transform: translate(0); }
   20% { transform: translate
 
-       /* Добавьте в ваш CSS в секцию .skills-grid */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  max-width: 1100px;
-  margin: 0 auto;
-  
-  /* Добавляем эти свойства */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
-.skill-card {
-  flex: 0 1 calc(33.333% - 25px);
-  min-width: 280px;
-  max-width: 350px;
-}
 
