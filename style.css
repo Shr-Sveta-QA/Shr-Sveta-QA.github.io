@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 /* === VARIABLES & IMPORTS === */
 :root {
@@ -97,7 +96,7 @@ body::before {
   width: 90%;
   max-width: 1200px;
   z-index: 1000;
-  background: rgba(26, 26, 46, 0.4);
+  background: rgba(26, 26, 46, 0.4); /* Более прозрачный фон */
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   border: var(--glass-border);
@@ -112,6 +111,7 @@ body::before {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
+/* Эффект градиентного свечения по краям */
 .header::after {
   content: '';
   position: absolute;
@@ -125,7 +125,7 @@ body::before {
     rgba(157, 78, 221, 0.1),
     rgba(0, 212, 255, 0.1)
   );
-  border-radius: 52px;
+  border-radius: 52px; /* На 2px больше основного радиуса */
   z-index: -1;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -138,7 +138,7 @@ body::before {
 .header.scrolled {
   top: 10px;
   width: calc(100% - 40px);
-  background: rgba(26, 26, 46, 0.6);
+  background: rgba(26, 26, 46, 0.6); /* Менее прозрачный при скролле */
   backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
   box-shadow: 
@@ -507,7 +507,8 @@ body::before {
 /* === ABOUT SECTION === */
 .about {
   position: relative;
-  padding: 100px 20px 40px;
+  padding: 100px;
+  padding-bottom: 1px;
 }
 
 .about .container {
@@ -567,21 +568,16 @@ body::before {
   letter-spacing: 1px;
 }
 
-/* === PERSONAL DATA - ЕДИНЫЙ СТИЛЬ === */
-.personal {
-  padding: 80px 20px;
-}
-
+/* === OPTIMIZED PERSONAL DATA === */
 .personal-grid.optimized {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
   max-width: 1100px;
-  margin: 0 auto 30px;
-  padding: 0 10px;
+  margin: 0 auto;
 }
 
-.personal-card {
+.personal-grid.optimized .personal-card {
   background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: var(--glass-border);
@@ -591,10 +587,9 @@ body::before {
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow);
 }
 
-.personal-card:hover {
+.personal-grid.optimized .personal-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-hover);
   border-color: var(--neon-blue);
@@ -632,7 +627,7 @@ body::before {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
 .info-item {
@@ -667,12 +662,10 @@ body::before {
 }
 
 .info-item .label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--cyber-light);
-  opacity: 0.7;
+  opacity: 0.8;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .info-item .value {
@@ -681,7 +674,27 @@ body::before {
   line-height: 1.4;
 }
 
-/* Специальные стили для третьей карточки (Хобби) */
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .personal-grid.optimized {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .personal-grid.optimized {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+/* Чтобы все карточки были одинаковой высоты */
+.personal-grid.optimized .personal-card {
+  min-height: 320px;
+}
+
+/* Градиентная рамка для хобби-карточки */
 .personal-grid.optimized .personal-card:nth-child(3) {
   border: 1px solid rgba(157, 78, 221, 0.3);
 }
@@ -700,112 +713,29 @@ body::before {
   color: var(--neon-purple);
 }
 
-/* === DESIGN ROW STYLES === */
-.design-row {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-.design-card {
-  width: 100%;
-  background: var(--card-bg);
-  backdrop-filter: blur(10px);
-  border: var(--glass-border);
-  border-radius: var(--border-radius);
-  padding: 25px;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(157, 78, 221, 0.3) !important;
-}
-
-.design-card:hover {
-  border-color: var(--neon-purple) !important;
-  box-shadow: 0 0 40px rgba(157, 78, 221, 0.2);
-  transform: translateY(-3px);
-}
-
-.design-card .card-header i {
-  background: rgba(157, 78, 221, 0.1) !important;
-  color: var(--neon-purple) !important;
-  border-radius: 10px;
-}
-
-.design-card .info-item i {
-  color: var(--neon-purple) !important;
-}
-
-.design-card .info-item.highlight {
-  background: rgba(157, 78, 221, 0.05);
-  border: 1px solid rgba(157, 78, 221, 0.15);
-  border-radius: 8px;
-  padding: 15px;
-}
-
-.design-card .info-item.highlight:hover {
-  background: rgba(157, 78, 221, 0.1);
-  border-color: rgba(157, 78, 221, 0.25);
-  transform: translateX(5px);
-}
-
-/* === ACCENT QUOTE STYLES === */
-.card-footer.accent-quote {
-  margin-top: 25px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(157, 78, 221, 0.15);
-  text-align: center;
-}
-
-.card-footer.accent-quote p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  color: var(--cyber-light);
-  font-size: 0.95rem;
-  font-style: italic;
-  opacity: 0.95;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.card-footer.accent-quote i:first-child {
-  color: var(--neon-purple);
-  font-size: 0.9rem;
-  filter: drop-shadow(0 0 5px rgba(157, 78, 221, 0.5));
-  transition: var(--transition);
-}
-
-.card-footer.accent-quote:hover i:first-child {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 8px rgba(157, 78, 221, 0.8));
-}
-
-.card-footer.accent-quote i.subtle {
-  color: var(--cyber-light);
-  opacity: 0.2;
-  font-size: 0.7rem;
-  margin-left: 2px;
-  transition: var(--transition);
-}
-
-.card-footer.accent-quote:hover i.subtle {
-  opacity: 0.4;
+/* Адаптивность для компактной версии */
+@media (max-width: 768px) {
+  .personal-grid.compact {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 400px;
+  }
+  
+  .personal-grid.compact .personal-card {
+    padding: 20px;
+  }
 }
 
 /* === SKILLS SECTION === */
 .skills {
   position: relative;
-  padding: 80px 20px;
+  padding: 30px;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .skill-card {
@@ -856,28 +786,20 @@ body::before {
   opacity: 0.9;
   line-height: 1.6;
 }
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.skill-card {
-  flex: 0 1 calc(33.333% - 25px);
-  min-width: 280px;
-  max-width: 350px;
 
 /* === CONTACTS SECTION === */
 .contacts {
   position: relative;
-  padding: 80px 20px;
+  padding: 50px;
+  padding-bottom: 90px;
 }
-
 .contacts-wrapper {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
 
+/* Заголовок контактов с теми же стилями */
 .contacts .section-title {
   font-size: 2.8rem;
   margin-bottom: 50px;
@@ -923,7 +845,6 @@ body::before {
   margin-bottom: 40px;
   opacity: 0.9;
 }
-
 .contact-buttons {
   display: flex;
   justify-content: center;
@@ -944,8 +865,10 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  /* Убираем все сложные свойства */
 }
 
+/* Простые градиенты без анимации */
 .contact-btn.github {
   background: linear-gradient(45deg, #333, #6e5494);
   color: white;
@@ -966,7 +889,6 @@ body::before {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   filter: brightness(1.1);
 }
-
 .contact-info {
   margin-top: 40px;
   padding: 20px;
@@ -1017,110 +939,188 @@ body::before {
   opacity: 0.7;
 }
 
-/* === BINARY RAIN BACKGROUND === */
-.binary-rain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.1;
-}
-
-.binary {
-  position: absolute;
-  color: var(--matrix-green);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  animation: fall linear infinite;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(100vh);
-  }
-}
-
-/* === MOBILE MENU OVERLAY === */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition);
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* === NAVIGATION SIDEBAR === */
-.nav-sidebar {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 999;
+.footer-links {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: rgba(26, 26, 46, 0.4);
-  backdrop-filter: blur(10px);
-  padding: 12px 8px;
-  border-radius: 30px;
-  border: var(--glass-border);
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
 }
 
-.nav-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+.footer-link {
+  color: var(--neon-blue);
+  text-decoration: none;
+  transition: var(--transition);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.footer-link:hover {
+  text-shadow: var(--neon-glow);
+}
+
+/* === MOBILE MENU STYLES === */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
   cursor: pointer;
+  z-index: 1001;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--neon-blue);
+  margin: 4px auto;
   transition: var(--transition);
   position: relative;
 }
 
-.nav-dot::after {
-  content: attr(data-label);
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--cyber-dark);
-  color: var(--cyber-light);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  white-space: nowrap;
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
   opacity: 0;
-  transition: var(--transition);
-  pointer-events: none;
-  border: 1px solid var(--neon-blue);
 }
 
-.nav-dot:hover {
-  background: var(--neon-blue);
-  transform: scale(1.2);
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
-.nav-dot:hover::after {
-  opacity: 1;
-  right: 25px;
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1024px) {
+  .name {
+    font-size: 3rem;
+  }
+  
+  .section h2 {
+    font-size: 2.5rem;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 }
 
-.nav-dot.active {
-  background: var(--neon-blue);
-  box-shadow: var(--neon-glow);
+@media (max-width: 768px) {
+  .header {
+    width: 95%;
+    padding: 12px 20px;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 100px 30px 30px;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    z-index: 1000;
+    border-left: 1px solid var(--neon-blue);
+  }
+  
+  .nav-menu.active {
+    right: 0;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 15px 25px;
+    margin: 5px 0;
+  }
+  
+  .header-buttons {
+    display: none;
+  }
+  
+  .hero {
+    padding: 120px 20px 60px;
+  }
+  
+  .name {
+    font-size: 2.5rem;
+  }
+  
+  .profile-container {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .section {
+    padding: 80px 20px;
+  }
+  
+  .section h2 {
+    font-size: 2.2rem;
+  }
+  
+  .personal-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: 2rem;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .profile-container {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .btn {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+  
+  .section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .stat-card {
+    padding: 20px;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
 }
 
 /* === SCROLL INDICATOR === */
@@ -1177,7 +1177,196 @@ body::before {
 
 @keyframes glitch-1 {
   0% { transform: translate(0); }
-  20% { transform: translate
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
 
+@keyframes glitch-2 {
+  0% { transform: translate(0); }
+  10% { transform: translate(-1px, 1px); }
+  30% { transform: translate(1px, -1px); }
+  50% { transform: translate(-1px, -1px); }
+  70% { transform: translate(1px, 1px); }
+  90% { transform: translate(-1px, 1px); }
+  100% { transform: translate(0); }
+}
 
+/* === BINARY RAIN BACKGROUND === */
+.binary-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.binary {
+  position: absolute;
+  color: var(--matrix-green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+/* Добавьте в ваш CSS файл */
+
+/* === DESIGN ROW STYLES - ИСПРАВЛЕННАЯ ВЕРСИЯ === */
+.design-row {
+  max-width: 1100px;
+  margin: 30px auto 0;
+  padding: 0 10px; /* Добавили отступы по бокам */
+}
+
+.design-card {
+  width: 100%;
+  background: var(--card-bg); /* Используем ту же переменную, что и у других карточек */
+  backdrop-filter: blur(10px); /* Тот же эффект размытия */
+  border: var(--glass-border); /* Такая же рамка как у всех */
+  border-radius: var(--border-radius); /* Используем переменную с закруглением */
+  padding: 25px;
+  transition: var(--transition);
+  box-shadow: var(--shadow); /* Такая же тень */
+  margin: 0; /* Убираем лишние отступы */
+}
+
+/* Акцент только на иконках, но в рамках общего стиля */
+.design-card .card-header i {
+  background: rgba(157, 78, 221, 0.1) !important;
+  color: var(--neon-purple) !important;
+  border-radius: 10px; /* Добавляем скругление для иконок */
+}
+
+.design-card .info-item i {
+  color: var(--neon-purple) !important;
+}
+
+/* Выделяем важную информацию, но сохраняем общий стиль */
+.design-card .info-item.highlight {
+  background: rgba(157, 78, 221, 0.05); /* Более прозрачный фон */
+  border: 1px solid rgba(157, 78, 221, 0.15);
+  border-radius: 8px; /* Добавляем скругление */
+  padding: 15px; /* Немного увеличиваем отступы */
+}
+
+.design-card .info-item.highlight:hover {
+  background: rgba(157, 78, 221, 0.1);
+  border-color: rgba(157, 78, 221, 0.25);
+  transform: translateX(5px);
+}
+
+/* Футер карточки в общем стиле */
+.card-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(157, 78, 221, 0.15); /* Более тонкая линия */
+  text-align: center;
+}
+
+.card-footer p {
+  color: var(--cyber-light);
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.card-footer i {
+  color: var(--neon-purple);
+  margin: 0 5px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* Добавляем отступы для всей секции personal */
+.personal {
+  padding: 80px 20px !important; /* Увеличиваем отступы секции */
+}
+
+/* Делаем отступы между карточками и краями */
+.personal-grid.optimized {
+  gap: 25px;
+  padding: 0 10px; /* Добавляем отступы по бокам */
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .design-row {
+    margin-top: 20px;
+    padding: 0 5px;
+  }
+  
+  .design-card {
+    padding: 20px;
+  }
+  
+  .design-card .info-item.highlight {
+    padding: 12px;
+  }
+  
+  .card-footer p {
+    font-size: 0.85rem;
+  }
+  
+  .personal {
+    padding: 60px 15px !important;
+  }
+  
+  .personal-grid.optimized {
+    gap: 20px;
+    padding: 0 5px;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+  .design-card {
+    padding: 15px;
+  }
+  
+  .design-card .info-item.highlight {
+    padding: 10px;
+  }
+  
+  .card-footer {
+    margin-top: 15px;
+    padding-top: 12px;
+  }
+}
+.terminal-style {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quote-pipe.start {
+  color: var(--matrix-green);
+  font-size: 2rem;
+}
+
+.quote-pipe.end {
+  color: var(--matrix-green);
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.terminal-style:hover .quote-pipe.end {
+  opacity: 1;
+  transition: var(--transition);
+}
+.output-pipe {
+  color: var(--neon-purple);
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
 
